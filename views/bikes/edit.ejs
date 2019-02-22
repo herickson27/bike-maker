@@ -1,0 +1,44 @@
+<!-- rendering form to create bikes  -->
+
+<h3>Update Your Data</h3>
+
+<form method='POST' action='/bikes'>
+ <!--  manufacturer select key -->
+    <select name='manufacturer'> 
+        <% manufacturers.forEach(function(manufacturer){ %> 
+            <option value='<%= manufacturer.name %>'
+            <% if (manufacturer.name === bike.manufacturer){ %>
+                <%= 'selected' %>
+            <% } %> 
+            ><%= manufacturer.name %></option>
+        <% }); %>
+    </select>
+<!-- year select key-->
+<select name='year'>
+    <option value="" disabled hidden >Year</option>
+    <% for (let i= 1956; i <= new Date().getFullYear(); i++) { %>
+    <option value='<%= i %>'><%= i %></option> 
+    <% } %>
+</select>
+<select name='size'>
+    <% for (let i = 42; i<=72; i += 2) { %>
+    <option value='<%= i %>'><%= i %></option>
+    <% } %> 
+</select>
+    <input type='text' name='model' placeholder='model'><br>
+    <input class='btn' type='submit' value='Add Bike, Bich!'>
+</form>
+
+<!---
+        add select
+        make option elements within tag value or man.name
+
+        also instead of our number type inputs, we want dropdowns instead
+            add year dropdown
+                for loop starting at 1956 - 2019
+            add size dropdown
+                for loop of 42-72 i+=2
+            
+
+        -->
+
